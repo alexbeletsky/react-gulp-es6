@@ -1,0 +1,20 @@
+{
+  "name": "react-grunt-es6",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "babelify": "^5.0.3",
+    "browserify": "^6.0.3",
+    "reactify": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alexander.beletsky@gmail.com",
+  "license": "MIT"
+}
