@@ -27,7 +27,7 @@ gulp.task('watch', function () {
 	});
 });
 
-gulp.task('start:dev', ['browserify', 'connect', 'watch'],  function () {
+gulp.task('start', ['browserify', 'connect', 'watch'],  function () {
 	var options = {
 		url: 'http://localhost:7012'
 	};
@@ -35,4 +35,4 @@ gulp.task('start:dev', ['browserify', 'connect', 'watch'],  function () {
 		.pipe(open('', options));
 });
 
-gulp.task('default', ['start:dev']);
+gulp.task('default', ['browserify']);
