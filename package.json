@@ -6,7 +6,9 @@
   "dependencies": {
     "gulp": "^3.8.11",
     "gulp-browserify": "^0.5.1",
+    "gulp-open": "^0.3.2",
     "gulp-rename": "^1.2.0",
+    "gulp-watch": "^4.1.1",
     "react": "^0.12.2"
   },
   "devDependencies": {
