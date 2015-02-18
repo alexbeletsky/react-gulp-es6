@@ -34,3 +34,5 @@ gulp.task('start:dev', ['browserify', 'connect', 'watch'],  function () {
 	gulp.src('./index.html')
 		.pipe(open('', options));
 });
+
+gulp.task('default', ['start:dev']);
