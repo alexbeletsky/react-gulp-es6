@@ -5,6 +5,8 @@ var connect = require('gulp-connect');
 var open = require('gulp-open');
 var watch = require('gulp-watch');
 
+var port = process.env.port || 3031;
+
 gulp.task('browserify', function () {
 	gulp.src('js/app.jsx')
 		.pipe(browserify({
@@ -14,25 +16,42 @@ gulp.task('browserify', function () {
 		.pipe(gulp.dest('build'));
 });
 
+gulp.task('open', function(){
+	var options = {
+		url: 'http://localhost:' + port
+	};
+
+	gulp.src('index.html')
+	.pipe(open('', options));
+});
+
 gulp.task('connect', function () {
 	connect.server({
 		hostname: 'localhost',
-		port: 7012
+		port: port,
+		livereload: true
 	});
+});
+
+gulp.task('jsx', function() {
+	gulp.src('js/**/*.jsx')
+		.pipe(connect.reload());
+});
+
+gulp.task('html', function(){
+	gulp.src('*.html')
+	.pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
-	watch(['js/**/*.js', 'js/**/*.jsx'], function () {
+	gulp.watch(['js/**/*.js', 'js/**/*.jsx'], function () {
 		gulp.start('browserify');
 	});
-});
 
-gulp.task('start', ['browserify', 'connect', 'watch'],  function () {
-	var options = {
-		url: 'http://localhost:7012'
-	};
-	gulp.src('./index.html')
-		.pipe(open('', options));
+	gulp.watch('index.html', ['html']);
+	gulp.watch('js/**/*.jsx', ['jsx']);
 });
 
 gulp.task('default', ['browserify']);
+
+gulp.task('serve', ['browserify', 'connect', 'open' ,'watch']);
